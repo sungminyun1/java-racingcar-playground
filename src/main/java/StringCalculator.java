@@ -11,7 +11,7 @@ public class StringCalculator {
             return 0;
         }
         List<Integer> parsedIntegerList = parseString(input);
-        return 1;
+        return sum(parsedIntegerList);
     }
 
     private boolean validate(String input) {
@@ -42,6 +42,12 @@ public class StringCalculator {
     private boolean validate(int num){
         if(num < 0) throw new RuntimeException();
         return true;
+    }
+
+    public int sum(List<Integer> input) {
+        return input.stream()
+                .mapToInt(i -> i)
+                .sum();
     }
 
 }

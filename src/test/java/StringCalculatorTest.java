@@ -46,4 +46,18 @@ class StringCalculatorTest {
         assertThatThrownBy(()->stringCalculator.calculate("-1,2,3"))
                 .isInstanceOf(RuntimeException.class);
     }
+
+    @DisplayName("리스트 요소의 총 합을 구한다")
+    @Test
+    void testSum(){
+        assertThat(stringCalculator.sum(Arrays.asList(1, 2, 3))).isEqualTo(6);
+    }
+
+    @DisplayName("문자열의 총 합을 구한다")
+    @Test
+    void testCalculate(){
+        assertThat(stringCalculator.calculate("1,2,3")).isEqualTo(6);
+        assertThat(stringCalculator.calculate("//<\n1<2<3")).isEqualTo(6);
+        assertThat(stringCalculator.calculate("1,2:3")).isEqualTo(6);
+    }
 }
