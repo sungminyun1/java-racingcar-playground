@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class RacingGameTest {
 
-    RacingGame racingGame = new RacingGame();
+    RacingGame racingGame = new RacingGame("aa,bb,cc");
 
     @DisplayName(",를 구분자로 자동차들의 이름을 가져와 생성한다")
     @Test
