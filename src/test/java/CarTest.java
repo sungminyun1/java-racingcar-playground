@@ -21,4 +21,22 @@ class CarTest {
     void createCarError(){
         assertThatThrownBy(()->new Car("BoongBoongE")).isInstanceOf(RuntimeException.class);
     }
+
+    @DisplayName("자동차 출력이 4 이상이면 자동차가 전진한다")
+    @Test
+    void moveCar(){
+        Car car = new Car("aa");
+        car.move(4);
+
+        assertThat(car.getDistance()).isEqualTo(1);
+    }
+
+    @DisplayName("자동차 출력이 4 미만이면 자동차가 전진하지않는다")
+    @Test
+    void dontMoveCar(){
+        Car car = new Car("aa");
+        car.move(3);
+
+        assertThat(car.getDistance()).isEqualTo(0);
+    }
 }
