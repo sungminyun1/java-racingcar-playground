@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 
 class StringCalculatorTest {
@@ -37,5 +38,12 @@ class StringCalculatorTest {
 
         assertThat(stringCalculator.parseString("//<\n1<2<3"))
                 .isEqualTo(Arrays.asList(1,2,3));
+    }
+
+    @DisplayName("음수가 들어가있다면 RuntimeException 발생")
+    @Test
+    void testRuntimeException() {
+        assertThatThrownBy(()->stringCalculator.calculate("-1,2,3"))
+                .isInstanceOf(RuntimeException.class);
     }
 }

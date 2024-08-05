@@ -10,6 +10,7 @@ public class StringCalculator {
         if(!validate(input)){
             return 0;
         }
+        List<Integer> parsedIntegerList = parseString(input);
         return 1;
     }
 
@@ -34,6 +35,13 @@ public class StringCalculator {
     private List<Integer> stringArrayToIntegerList(String[] input) {
         return Arrays.stream(input)
                 .map(Integer::parseInt)
+                .peek(this::validate)
                 .collect(Collectors.toList());
     }
+
+    private boolean validate(int num){
+        if(num < 0) throw new RuntimeException();
+        return true;
+    }
+
 }
