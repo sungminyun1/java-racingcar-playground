@@ -2,10 +2,10 @@ import java.util.Objects;
 
 public class Car {
 
-    String name;
+    Name name;
 
     public Car(String name) {
-        this.name = name;
+        this.name = new Name(name);
     }
 
     @Override
