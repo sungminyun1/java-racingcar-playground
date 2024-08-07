@@ -21,4 +21,17 @@ class CarTest {
     void createCarTooLongName(){
         assertThatThrownBy(() ->new Car("LOOOOONG")).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("4이상의 출력이라면 자동차는 전진한다")
+    @Test
+    void carMove(){
+        Car car = new Car("aaa");
+        car.move(4);
+
+        Car car2 = new Car("bbb");
+        car.move(3);
+
+        assertThat(car).isEqualTo(new Car("aaa", 1));
+        assertThat(car2).isEqualTo(new Car("bbb", 0));
+    }
 }
