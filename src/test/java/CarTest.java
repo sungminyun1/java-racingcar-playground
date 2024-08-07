@@ -2,6 +2,9 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
@@ -33,5 +36,19 @@ class CarTest {
 
         assertThat(car).isEqualTo(new Car("aaa", 1));
         assertThat(car2).isEqualTo(new Car("bbb", 0));
+    }
+
+    @DisplayName(",를 기준으로 자동차 여러대를 만들 수 있다")
+    @Test
+    void createCars(){
+        Cars cars = new Cars("aaa,bbb,ccc");
+        List<Car> carList = new ArrayList<>();
+        carList.add(new Car("aaa"));
+        carList.add(new Car("bbb"));
+        carList.add(new Car("ccc"));
+        Cars cars2 = new Cars(carList);
+
+
+        assertThat(cars).isEqualTo(cars2);
     }
 }
