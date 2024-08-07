@@ -1,6 +1,6 @@
 import java.util.Objects;
 
-public class Car {
+public class Car implements Comparable<Car> {
 
     private final static int MOVEABLE_POWER = 4;
 
@@ -24,6 +24,15 @@ public class Car {
 
     private boolean moveable(int power){
         return power >= MOVEABLE_POWER;
+    }
+
+    public boolean isWinningCar(Car winningCar){
+        return this.compareTo(winningCar) == 0;
+    }
+
+    @Override
+    public int compareTo(Car o) {
+        return position.compareTo(o.position);
     }
 
     @Override

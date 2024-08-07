@@ -51,4 +51,26 @@ class CarTest {
 
         assertThat(cars).isEqualTo(cars2);
     }
+
+    @DisplayName("우승한 자동차들을 구할 수 있다")
+    @Test
+    void getWinningCars(){
+        Car car1 = new Car("aaa", 1);
+        Car car2 = new Car("bbb", 2);
+        Car car3 = new Car("ccc", 3);
+        Car car4 = new Car("ddd", 3);
+        List<Car> carList = new ArrayList<>();
+        carList.add(car1);
+        carList.add(car2);
+        carList.add(car3);
+        carList.add(car4);
+
+        List<Car> winningCars = new ArrayList<>();
+        winningCars.add(car3);
+        winningCars.add(car4);
+
+        Cars cars = new Cars(carList);
+
+        assertThat(cars.getWinningCars()).isEqualTo(new Cars(winningCars));
+    }
 }

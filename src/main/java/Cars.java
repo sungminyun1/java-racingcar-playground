@@ -25,6 +25,20 @@ public class Cars {
                 .collect(Collectors.toList());
     }
 
+    public Cars getWinningCars() {
+        Car maxCar = getMaxCar();
+        return new Cars(cars.stream()
+                .filter(car -> car.isWinningCar(maxCar))
+                .collect(Collectors.toList()));
+    }
+
+    private Car getMaxCar() {
+        return cars.stream()
+                .max(Car::compareTo)
+                .orElseThrow(RuntimeException::new);
+    }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
